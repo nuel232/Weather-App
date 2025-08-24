@@ -6,10 +6,11 @@ import 'package:http/http.dart' as http;
 import 'package:weather_app/models/weather_model.dart';
 
 class WeatherService {
+  // ignore: constant_identifier_names
   static const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
   final String apiKey;
 
-  WeatherService({this.apiKey});
+  WeatherService({required this.apiKey});
 
   Future<Weather> getWeather(String cityName) async {
     final response = await http.get(

@@ -1,5 +1,6 @@
 import 'package:dotenv/dotenv.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/services/weather_service.dart';
 
@@ -31,6 +32,18 @@ class _WeatherPageState extends State<WeatherPage> {
     catch (e) {
       print(e);
     }
+  }
+
+  //WEATHER animation
+
+  //init state
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    //fetch weather on startup
+    _fetchWeather();
   }
 
   @override
