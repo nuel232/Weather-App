@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "D:/vscode/dev/weather_app/linux"
+  "cmake.sourceDirectory": "D:/vscode/dev/weather_app/linux",
+  "java.configuration.updateBuildConfiguration": "automatic"
 }
