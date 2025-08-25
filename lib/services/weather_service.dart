@@ -29,18 +29,22 @@ class WeatherService {
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        throw Exception('Location permissions are denied');
+      }
     }
 
     //fetch the current location
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
+      timeLimit: Duration(seconds: 15),
     );
 
     //convert the location into a list of placemark objects
     List<Placemark> placemarks = await placemarkFromCoordinates(
       position.latitude,
       position.longitude,
-    );
+    ).timeout(Duration(seconds: 10));
 
     //extract the city name from the placemark object
     String? city = placemarks[0].locality;

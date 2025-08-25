@@ -1,4 +1,3 @@
-import 'package:dotenv/dotenv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather_app/models/weather_model.dart';
@@ -48,6 +47,21 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.blue[200],
+      appBar: AppBar(title: const Text('Weather App'), centerTitle: true),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            //city Name
+            Text(_weather?.cityName ?? 'loading city...'),
+
+            //temperature
+            Text('${_weather?.temperature.round()} °C'),
+          ],
+        ),
+      ),
+    );
   }
 }
