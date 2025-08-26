@@ -37,14 +37,14 @@ class WeatherService {
     //fetch the current location
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
-      timeLimit: Duration(seconds: 15),
+      timeLimit: Duration(seconds: 25),
     );
 
     //convert the location into a list of placemark objects
     List<Placemark> placemarks = await placemarkFromCoordinates(
       position.latitude,
       position.longitude,
-    ).timeout(Duration(seconds: 10));
+    ).timeout(Duration(seconds: 15));
 
     //extract the city name from the placemark object
     String? city = placemarks[0].locality;
